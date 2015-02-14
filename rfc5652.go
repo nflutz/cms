@@ -316,6 +316,12 @@ type MessageDigest []byte
 
 // id-countersignature OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 6 }
+var (
+	oidAttributeContentType      = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 9, 3}
+	oidAttributeMessageDigest    = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 9, 4}
+	oidAttributeSigningTime      = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 9, 5}
+	oidAttributeCounterSignature = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 9, 6}
+)
 
 // -- Obsolete Extended Certificate syntax from PKCS #6
 

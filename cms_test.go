@@ -32,6 +32,10 @@ var marshalCMSTests = []marshalCMSTest{
 	{oidContentTypeDigestData, "06092A864886F70D010705"},
 	{oidContentTypeEncryptedData, "06092A864886F70D010706"},
 	{oidContentTypeAuthData, "060B2A864886F70D0109100102"},
+	{oidAttributeContentType, "06092A864886F70D010903"},
+	{oidAttributeMessageDigest, "06092A864886F70D010904"},
+	{oidAttributeSigningTime, "06092A864886F70D010905"},
+	{oidAttributeCounterSignature, "06092A864886F70D010906"},
 }
 
 func TestMarshalCMS(t *testing.T) {
