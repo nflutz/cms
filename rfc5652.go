@@ -1,5 +1,9 @@
 package cms
 
+import (
+	"encoding/asn1"
+)
+
 // -- Imports from RFC 5280 [PROFILE], Appendix A.1
 //       AlgorithmIdentifier, Certificate, CertificateList,
 //       CertificateSerialNumber, Name
@@ -276,6 +280,15 @@ type UserKeyingMaterial []byte
 
 // id-ct-authData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs-9(9) smime(16) ct(1) 2 }
+var (
+	oidContentTypeContentInfo   = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 9, 16, 1, 6}
+	oidContentTypeData          = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 7, 1}
+	oidContentTypeSignedData    = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 7, 2}
+	oidContentTypeEnvelopedData = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 7, 3}
+	oidContentTypeDigestData    = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 7, 5}
+	oidContentTypeEncryptedData = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 7, 6}
+	oidContentTypeAuthData      = asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 9, 16, 1, 2}
+)
 
 // -- The CMS Attributes
 

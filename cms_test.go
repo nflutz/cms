@@ -25,6 +25,13 @@ var marshalCMSTests = []marshalCMSTest{
 	{MessageDigest{0x01}, "040101"},
 	{CMSVersion(1), "020101"},
 	{AttCertVersionV1(0), "020100"},
+	{oidContentTypeContentInfo, "060B2A864886F70D0109100106"},
+	{oidContentTypeData, "06092A864886F70D010701"},
+	{oidContentTypeSignedData, "06092A864886F70D010702"},
+	{oidContentTypeEnvelopedData, "06092A864886F70D010703"},
+	{oidContentTypeDigestData, "06092A864886F70D010705"},
+	{oidContentTypeEncryptedData, "06092A864886F70D010706"},
+	{oidContentTypeAuthData, "060B2A864886F70D0109100102"},
 }
 
 func TestMarshalCMS(t *testing.T) {
