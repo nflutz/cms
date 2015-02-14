@@ -1,24 +1,21 @@
 package cms
 
-
 import (
 	"bytes"
-	"testing"
 	"encoding/asn1"
 	"encoding/hex"
+	"testing"
 )
 
-
 type marshalCMSTest struct {
-	in interface {}
+	in  interface{}
 	out string // Hex string representing DER encoded value
 }
 
-
 var marshalCMSTests = []marshalCMSTest{
 	{CMSVersion(1), "020101"},
+	{AttCertVersionV1(0), "020100"},
 }
-
 
 func TestMarshalCMS(t *testing.T) {
 	for i, test := range marshalCMSTests {
@@ -28,7 +25,7 @@ func TestMarshalCMS(t *testing.T) {
 		}
 		out, _ := hex.DecodeString(test.out)
 		if !bytes.Equal(out, data) {
-			t.Errorf("Test #%d Failed - got: %x expected: %x\n", i + 1, data, out)
+			t.Errorf("Test #%d Failed - got: %x expected: %x\n", i+1, data, out)
 		}
 	}
 }
