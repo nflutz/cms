@@ -21,6 +21,7 @@ var marshalCMSTests = []marshalCMSTest{
 	{SubjectKeyIdentifier{0x01}, "040101"},
 	{Digest{0x01}, "040101"},
 	{MessageAuthenticationCode{0x01}, "040101"},
+	{UserKeyingMaterial{0x01}, "040101"},
 	{CMSVersion(1), "020101"},
 	{AttCertVersionV1(0), "020100"},
 }
