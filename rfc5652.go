@@ -280,6 +280,7 @@ type UserKeyingMaterial []byte
 // -- The CMS Attributes
 
 // MessageDigest ::= OCTET STRING
+type MessageDigest []byte
 
 // SigningTime  ::= Time
 
