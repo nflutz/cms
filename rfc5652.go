@@ -259,25 +259,18 @@ type UserKeyingMaterial []byte
 //   keyAttr ANY DEFINED BY keyAttrId OPTIONAL }
 
 // -- Content Type Object Identifiers
-
 // id-ct-contentInfo OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs9(9) smime(16) ct(1) 6 }
-
 // id-data OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 1 }
-
 // id-signedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 2 }
-
 // id-envelopedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 3 }
-
 // id-digestedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 5 }
-
 // id-encryptedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 6 }
-
 // id-ct-authData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs-9(9) smime(16) ct(1) 2 }
 var (
@@ -304,16 +297,12 @@ type MessageDigest []byte
 // Countersignature ::= SignerInfo
 
 // -- Attribute Object Identifiers
-
 // id-contentType OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 3 }
-
 // id-messageDigest OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 4 }
-
 // id-signingTime OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 5 }
-
 // id-countersignature OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 6 }
 var (
