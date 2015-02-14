@@ -103,6 +103,7 @@ type EncryptedContent []byte
 //   ori [4] OtherRecipientInfo }
 
 // EncryptedKey ::= OCTET STRING
+type EncryptedKey []byte
 
 // KeyTransRecipientInfo ::= SEQUENCE {
 //   version CMSVersion,  -- always set to 0 or 2
