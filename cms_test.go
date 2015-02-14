@@ -20,6 +20,7 @@ var marshalCMSTests = []marshalCMSTest{
 	{EncryptedKey{0x01}, "040101"},
 	{SubjectKeyIdentifier{0x01}, "040101"},
 	{Digest{0x01}, "040101"},
+	{MessageAuthenticationCode{0x01}, "040101"},
 	{CMSVersion(1), "020101"},
 	{AttCertVersionV1(0), "020100"},
 }

@@ -201,6 +201,7 @@ type Digest []byte
 // UnauthAttributes ::= SET SIZE (1..MAX) OF Attribute
 
 // MessageAuthenticationCode ::= OCTET STRING
+type MessageAuthenticationCode []byte
 
 // DigestAlgorithmIdentifier ::= AlgorithmIdentifier
 
