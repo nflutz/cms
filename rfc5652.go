@@ -70,6 +70,7 @@ package cms
 // AttributeValue ::= ANY
 
 // SignatureValue ::= OCTET STRING
+type SignatureValue []byte
 
 // EnvelopedData ::= SEQUENCE {
 //   version CMSVersion,
@@ -343,3 +344,4 @@ type CMSVersion int
 //   extensions Extensions OPTIONAL }
 
 // AttCertVersionV1 ::= INTEGER { v1(0) }
+type AttCertVersionV1 int
