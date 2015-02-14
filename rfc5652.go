@@ -248,6 +248,7 @@ type MessageAuthenticationCode []byte
 type CMSVersion int
 
 // UserKeyingMaterial ::= OCTET STRING
+type UserKeyingMaterial []byte
 
 // OtherKeyAttribute ::= SEQUENCE {
 //   keyAttrId OBJECT IDENTIFIER,
