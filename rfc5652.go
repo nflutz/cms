@@ -274,31 +274,52 @@ type UserKeyingMaterial []byte
 // id-encryptedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
 //     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 6 }
 
-// UserKeyingMaterial ::= OCTET STRING
+// id-ct-authData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+//     us(840) rsadsi(113549) pkcs(1) pkcs-9(9) smime(16) ct(1) 2 }
 
-// OtherKeyAttribute ::= SEQUENCE {
-//   keyAttrId OBJECT IDENTIFIER,
-//   keyAttr ANY DEFINED BY keyAttrId OPTIONAL }
+// -- The CMS Attributes
 
-// -- Content Type Object Identifiers
+// MessageDigest ::= OCTET STRING
 
-// id-ct-contentInfo OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-//     us(840) rsadsi(113549) pkcs(1) pkcs9(9) smime(16) ct(1) 6 }
+// SigningTime  ::= Time
 
-// id-data OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-//     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 1 }
+// Time ::= CHOICE {
+//   utcTime UTCTime,
+//   generalTime GeneralizedTime }
 
-// id-signedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-//     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 2 }
+// Countersignature ::= SignerInfo
 
-// id-envelopedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-//     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 3 }
+// -- Attribute Object Identifiers
 
-// id-digestedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-//     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 5 }
+// id-contentType OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+//     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 3 }
 
-// id-encryptedData OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-//     us(840) rsadsi(113549) pkcs(1) pkcs7(7) 6 }
+// id-messageDigest OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+//     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 4 }
+
+// id-signingTime OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+//     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 5 }
+
+// id-countersignature OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+//     us(840) rsadsi(113549) pkcs(1) pkcs9(9) 6 }
+
+// -- Obsolete Extended Certificate syntax from PKCS #6
+
+// ExtendedCertificateOrCertificate ::= CHOICE {
+//   certificate Certificate,
+//   extendedCertificate [0] IMPLICIT ExtendedCertificate }
+
+// ExtendedCertificate ::= SEQUENCE {
+//   extendedCertificateInfo ExtendedCertificateInfo,
+//   signatureAlgorithm SignatureAlgorithmIdentifier,
+//   signature Signature }
+
+// ExtendedCertificateInfo ::= SEQUENCE {
+//   version CMSVersion,
+//   certificate Certificate,
+//   attributes UnauthAttributes }
+
+// Signature ::= BIT STRING
 
 // AttributeCertificateVersion1
 //     { iso(1) member-body(2) us(840) rsadsi(113549)
