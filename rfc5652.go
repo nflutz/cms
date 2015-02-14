@@ -91,6 +91,7 @@ type SignatureValue []byte
 //   encryptedContent [0] IMPLICIT EncryptedContent OPTIONAL }
 
 // EncryptedContent ::= OCTET STRING
+type EncryptedContent []byte
 
 // UnprotectedAttributes ::= SET SIZE (1..MAX) OF Attribute
 

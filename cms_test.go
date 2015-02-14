@@ -15,6 +15,8 @@ type marshalCMSTest struct {
 var marshalCMSTests = []marshalCMSTest{
 	{SignatureValue{0x01}, "040101"},
 	{SignatureValue{0x01, 0x02}, "04020102"},
+	{EncryptedContent{0x01}, "040101"},
+	{EncryptedContent{0x01, 0x02}, "04020102"},
 	{CMSVersion(1), "020101"},
 	{AttCertVersionV1(0), "020100"},
 }
