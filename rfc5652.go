@@ -178,6 +178,7 @@ type SubjectKeyIdentifier []byte
 //   digest Digest }
 
 // Digest ::= OCTET STRING
+type Digest []byte
 
 // EncryptedData ::= SEQUENCE {
 //   version CMSVersion,
