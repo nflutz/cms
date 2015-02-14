@@ -147,6 +147,7 @@ type EncryptedKey []byte
 //   other OtherKeyAttribute OPTIONAL }
 
 // SubjectKeyIdentifier ::= OCTET STRING
+type SubjectKeyIdentifier []byte
 
 // KEKRecipientInfo ::= SEQUENCE {
 //   version CMSVersion,  -- always set to 4
