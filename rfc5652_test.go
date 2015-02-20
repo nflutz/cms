@@ -40,6 +40,7 @@ var marshalCMSTests = []marshalCMSTest{
 		"301006092a864886f70d010706a003040101"},
 	{EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
 		"301006092a864886f70d010706a003040101"},
+	// TODO: change EncapsulatedContentInfo test to use encapsulatedContent
 	{EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{}},
 		"300b06092a864886f70d010706"},
 	{Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
