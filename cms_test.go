@@ -50,6 +50,10 @@ var marshalCMSTests = []marshalCMSTest{
 		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 	}, "311C300C06022A033106020101020101300C06022A033106020101020101"},
+	{UnsignedAttributesSET{
+		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+	}, "311C300C06022A033106020101020101300C06022A033106020101020101"},
 }
 
 func TestMarshalCMS(t *testing.T) {

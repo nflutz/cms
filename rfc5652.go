@@ -70,10 +70,11 @@ type EncapsulatedContentInfo struct {
 //   issuerAndSerialNumber IssuerAndSerialNumber,
 //   subjectKeyIdentifier [0] SubjectKeyIdentifier }
 
-// SignedAttributes ::= SET SIZE (1..MAX) OF Attribute
+// SignedAttributesSET ::= SET SIZE (1..MAX) OF Attribute
 type SignedAttributesSET []Attribute
 
-// UnsignedAttributes ::= SET SIZE (1..MAX) OF Attribute
+// UnsignedAttributesSET ::= SET SIZE (1..MAX) OF Attribute
+type UnsignedAttributesSET []Attribute
 
 // Attribute ::= SEQUENCE {
 //   attrType OBJECT IDENTIFIER,
