@@ -215,7 +215,8 @@ type Digest []byte
 //   mac MessageAuthenticationCode,
 //   unauthAttrs [3] IMPLICIT UnauthAttributes OPTIONAL }
 
-// AuthAttributes ::= SET SIZE (1..MAX) OF Attribute
+// AuthAttributesSET ::= SET SIZE (1..MAX) OF Attribute
+type AuthAttributesSET []Attribute
 
 // UnauthAttributes ::= SET SIZE (1..MAX) OF Attribute
 
