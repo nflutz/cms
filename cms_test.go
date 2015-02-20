@@ -46,6 +46,10 @@ var marshalCMSTests = []marshalCMSTest{
 		"300C06022A033106020101020101"},
 	{Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{EncryptedKey{0x01}, EncryptedKey{0x01}}},
 		"300C06022A033106040101040101"},
+	{SignedAttributesSET{
+		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+	}, "311C300C06022A033106020101020101300C06022A033106020101020101"},
 }
 
 func TestMarshalCMS(t *testing.T) {

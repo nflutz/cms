@@ -71,6 +71,7 @@ type EncapsulatedContentInfo struct {
 //   subjectKeyIdentifier [0] SubjectKeyIdentifier }
 
 // SignedAttributes ::= SET SIZE (1..MAX) OF Attribute
+type SignedAttributesSET []Attribute
 
 // UnsignedAttributes ::= SET SIZE (1..MAX) OF Attribute
 
