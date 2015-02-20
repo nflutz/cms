@@ -77,8 +77,13 @@ type EncapsulatedContentInfo struct {
 // Attribute ::= SEQUENCE {
 //   attrType OBJECT IDENTIFIER,
 //   attrValues SET OF AttributeValue }
+type Attribute struct {
+	AttrType   asn1.ObjectIdentifier
+	AttrValues []AttributeValue `asn1:"set"`
+}
 
 // AttributeValue ::= ANY
+type AttributeValue interface{}
 
 // SignatureValue ::= OCTET STRING
 type SignatureValue []byte

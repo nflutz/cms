@@ -42,6 +42,10 @@ var marshalCMSTests = []marshalCMSTest{
 		"301006092A864886F70D010706A003040101"},
 	{EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{}},
 		"300B06092A864886F70D010706"},
+	{Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		"300C06022A033106020101020101"},
+	{Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{EncryptedKey{0x01}, EncryptedKey{0x01}}},
+		"300C06022A033106040101040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
