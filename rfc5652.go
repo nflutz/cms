@@ -31,12 +31,11 @@ import (
 // ContentInfo ::= SEQUENCE {
 //   contentType ContentType,
 //   content [0] EXPLICIT ANY DEFINED BY contentType }
+// ContentType ::= OBJECT IDENTIFIER
 type ContentInfo struct {
 	ContentType asn1.ObjectIdentifier
 	Content     interface{} `asn1:"tag:0,explicit"`
 }
-
-// ContentType ::= OBJECT IDENTIFIER
 
 // SignedData ::= SEQUENCE {
 //   version CMSVersion,
@@ -53,6 +52,10 @@ type ContentInfo struct {
 // EncapsulatedContentInfo ::= SEQUENCE {
 //   eContentType ContentType,
 //   eContent [0] EXPLICIT OCTET STRING OPTIONAL }
+type EncapsulatedContentInfo struct {
+	EContentType asn1.ObjectIdentifier
+	EContent     interface{} `asn1:"tag:0,explicit,optional"`
+}
 
 // SignerInfo ::= SEQUENCE {
 //   version CMSVersion,

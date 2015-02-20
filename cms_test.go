@@ -38,6 +38,8 @@ var marshalCMSTests = []marshalCMSTest{
 	{oidAttributeCounterSignature, "06092A864886F70D010906"},
 	{ContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
 		"301006092A864886F70D010706A003040101"},
+	{EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
+		"301006092A864886F70D010706A003040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
