@@ -31,6 +31,10 @@ import (
 // ContentInfo ::= SEQUENCE {
 //   contentType ContentType,
 //   content [0] EXPLICIT ANY DEFINED BY contentType }
+type ContentInfo struct {
+	ContentType asn1.ObjectIdentifier
+	Content     interface{} `asn1:"tag:0,explicit"`
+}
 
 // ContentType ::= OBJECT IDENTIFIER
 
