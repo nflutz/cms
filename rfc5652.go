@@ -1,6 +1,7 @@
 package cms
 
 import (
+	"crypto/x509/pkix"
 	"encoding/asn1"
 )
 
@@ -45,7 +46,8 @@ type ContentInfo struct {
 //   crls [1] IMPLICIT RevocationInfoChoices OPTIONAL,
 //   signerInfos SignerInfos }
 
-// DigestAlgorithmIdentifiers ::= SET OF DigestAlgorithmIdentifier
+// DigestAlgorithmIdentifiersSET ::= SET OF DigestAlgorithmIdentifier
+type DigestAlgorithmIdentifiersSET []pkix.AlgorithmIdentifier
 
 // SignerInfos ::= SET OF SignerInfo
 

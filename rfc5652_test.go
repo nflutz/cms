@@ -2,6 +2,7 @@ package cms
 
 import (
 	"bytes"
+	"crypto/x509/pkix"
 	"encoding/asn1"
 	"encoding/hex"
 	"testing"
@@ -68,6 +69,10 @@ var marshalCMSTests = []marshalCMSTest{
 		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 	}, "311c300c06022a033106020101020101300c06022a033106020101020101"},
+	{DigestAlgorithmIdentifiersSET{
+		pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
+		pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
+	}, "310c300406022a03300406022a03"},
 }
 
 func TestMarshalCMS(t *testing.T) {
