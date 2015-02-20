@@ -276,6 +276,10 @@ type UserKeyingMaterial []byte
 // OtherKeyAttribute ::= SEQUENCE {
 //   keyAttrId OBJECT IDENTIFIER,
 //   keyAttr ANY DEFINED BY keyAttrId OPTIONAL }
+type OtherKeyAttribute struct {
+	KeyAttrID asn1.ObjectIdentifier
+	KeyAttr   asn1.RawValue `asn1:"optional"`
+}
 
 // -- Content Type Object Identifiers
 // id-ct-contentInfo OBJECT IDENTIFIER ::= { iso(1) member-body(2)

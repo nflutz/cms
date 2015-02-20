@@ -73,6 +73,11 @@ var marshalCMSTests = []marshalCMSTest{
 		pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
 		pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
 	}, "310c300406022a03300406022a03"},
+	{OtherKeyAttribute{
+		KeyAttrID: asn1.ObjectIdentifier{1, 2, 3},
+		KeyAttr:   asn1.RawValue{Tag: 1, Class: 2, IsCompound: false, Bytes: []byte{1, 2, 3}},
+	}, "300906022a038103010203"},
+	{OtherKeyAttribute{KeyAttrID: asn1.ObjectIdentifier{1, 2, 3}}, "300406022a03"},
 }
 
 func TestMarshalCMS(t *testing.T) {
