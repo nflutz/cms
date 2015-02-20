@@ -111,7 +111,8 @@ type SignatureValue []byte
 // EncryptedContent ::= OCTET STRING
 type EncryptedContent []byte
 
-// UnprotectedAttributes ::= SET SIZE (1..MAX) OF Attribute
+// UnprotectedAttributesSET ::= SET SIZE (1..MAX) OF Attribute
+type UnprotectedAttributesSET []Attribute
 
 // RecipientInfo ::= CHOICE {
 //   ktri KeyTransRecipientInfo,
