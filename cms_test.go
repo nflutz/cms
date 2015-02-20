@@ -46,6 +46,7 @@ var marshalCMSTests = []marshalCMSTest{
 		"300c06022a033106020101020101"},
 	{Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{EncryptedKey{0x01}, EncryptedKey{0x01}}},
 		"300c06022a033106040101040101"},
+	{SignedAttributesSET{}, "3100"},
 	{SignedAttributesSET{
 		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
