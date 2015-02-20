@@ -151,6 +151,10 @@ type EncryptedKey []byte
 // OriginatorPublicKey ::= SEQUENCE {
 //   algorithm AlgorithmIdentifier,
 //   publicKey BIT STRING }
+type OriginatorPublicKey struct {
+	Algorithm pkix.AlgorithmIdentifier
+	PublicKey asn1.BitString
+}
 
 // RecipientEncryptedKeys ::= SEQUENCE OF RecipientEncryptedKey
 

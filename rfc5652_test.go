@@ -78,6 +78,10 @@ var marshalCMSTests = []marshalCMSTest{
 		KeyAttr:   asn1.RawValue{Tag: 1, Class: 2, IsCompound: false, Bytes: []byte{1, 2, 3}},
 	}, "300906022a038103010203"},
 	{OtherKeyAttribute{KeyAttrID: asn1.ObjectIdentifier{1, 2, 3}}, "300406022a03"},
+	{OriginatorPublicKey{
+		Algorithm: pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
+		PublicKey: asn1.BitString{[]byte{0x80}, 1},
+	}, "300a300406022a0303020780"},
 }
 
 func TestMarshalCMS(t *testing.T) {
