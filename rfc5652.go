@@ -56,7 +56,7 @@ type DigestAlgorithmIdentifiersSET []pkix.AlgorithmIdentifier
 //   eContent [0] EXPLICIT OCTET STRING OPTIONAL }
 type EncapsulatedContentInfo struct {
 	EContentType asn1.ObjectIdentifier
-	EContent     interface{} `asn1:"tag:0,explicit,optional,omitempty"`
+	EContent     []byte `asn1:"tag:0,explicit,optional,omitempty"`
 }
 
 // SignerInfo ::= SEQUENCE {

@@ -39,10 +39,10 @@ var marshalCMSTests = []marshalCMSTest{
 	{oidAttributeCounterSignature, "06092a864886f70d010906"},
 	{ContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
 		"301006092a864886f70d010706a003040101"},
+	// TODO: change EncapsulatedContentInfo test to use encapsulatedContent
 	{EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
 		"301006092a864886f70d010706a003040101"},
-	// TODO: change EncapsulatedContentInfo test to use encapsulatedContent
-	{EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{}},
+	{EncapsulatedContentInfo{EContentType: oidContentTypeEncryptedData},
 		"300b06092a864886f70d010706"},
 	{Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		"300c06022a033106020101020101"},
