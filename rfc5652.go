@@ -218,7 +218,8 @@ type Digest []byte
 // AuthAttributesSET ::= SET SIZE (1..MAX) OF Attribute
 type AuthAttributesSET []Attribute
 
-// UnauthAttributes ::= SET SIZE (1..MAX) OF Attribute
+// UnauthAttributesSET ::= SET SIZE (1..MAX) OF Attribute
+type UnauthAttributesSET []Attribute
 
 // MessageAuthenticationCode ::= OCTET STRING
 type MessageAuthenticationCode []byte
