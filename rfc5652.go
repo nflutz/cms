@@ -110,6 +110,11 @@ type SignatureValue []byte
 //   contentType ContentType,
 //   contentEncryptionAlgorithm ContentEncryptionAlgorithmIdentifier,
 //   encryptedContent [0] IMPLICIT EncryptedContent OPTIONAL }
+type EncryptedContentInfo struct {
+	ContentType                asn1.ObjectIdentifier
+	ContentEncryptionAlgorithm pkix.AlgorithmIdentifier
+	EncryptedContent           EncryptedContent `asn1:"implicit,tag:0,optional"`
+}
 
 // EncryptedContent ::= OCTET STRING
 type EncryptedContent []byte

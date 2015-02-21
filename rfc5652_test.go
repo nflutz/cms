@@ -94,6 +94,12 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		SerialNumber: big.NewInt(1),
 	}, "301f301a311830160603550403130f7777772e6578616d706c652e636f6d020101"},
+	{EncapsulatedContentInfo{
+		ContentType: asn1.ObjectIdentifier{1, 2, 3},
+		ContentEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+	}, "300a06022a03300406022a03"},
 }
 
 func TestMarshalCMS(t *testing.T) {
