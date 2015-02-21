@@ -157,10 +157,6 @@ type KeyTransRecipientInfo struct {
 	EncryptedKey           EncryptedKey
 }
 
-// RecipientIdentifier ::= CHOICE {
-//   issuerAndSerialNumber IssuerAndSerialNumber,
-//   subjectKeyIdentifier [0] SubjectKeyIdentifier }
-
 // KeyAgreeRecipientInfo ::= SEQUENCE {
 //   version CMSVersion,  -- always set to 3
 //   originator ::= CHOICE {
