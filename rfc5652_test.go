@@ -227,6 +227,83 @@ var marshalCMSTests = []marshalCMSTest{
 			EncryptedKey: EncryptedKey{0x01},
 		},
 	}, "30193017a012040101170d3135303232303031303230335a040101"},
+	{KeyAgreeRecipientInfo{
+		Version: CMSVersion(3),
+		Originator: IssuerAndSerialNumber{
+			Issuer: pkix.RDNSequence{
+				pkix.RelativeDistinguishedNameSET{
+					pkix.AttributeTypeAndValue{
+						Type:  asn1.ObjectIdentifier{2, 5, 4, 3},
+						Value: "www.example.com",
+					},
+				},
+			},
+			SerialNumber: big.NewInt(1),
+		},
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		RecipientEncryptedKeys: RecipientEncryptedKeys{
+			RecipientEncryptedKey{
+				RKeyID: RecipientKeyIdentifier{
+					SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+					Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+				},
+				EncryptedKey: EncryptedKey{0x01},
+			},
+		},
+	}, "3047020103a021301f301a311830160603550403130f7777772e6578616d706c652e636f6d020101300406022a0330193017a012040101170d3135303232303031303230335a040101"},
+	{KeyAgreeRecipientInfo{
+		Version:    CMSVersion(3),
+		Originator: asn1.RawValue{Tag: 0, Class: 2, IsCompound: false, Bytes: []byte{1}},
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		RecipientEncryptedKeys: RecipientEncryptedKeys{
+			RecipientEncryptedKey{
+				RKeyID: RecipientKeyIdentifier{
+					SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+					Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+				},
+				EncryptedKey: EncryptedKey{0x01},
+			},
+		},
+	}, "3027020103800101300406022a0330193017a012040101170d3135303232303031303230335a040101"},
+	{KeyAgreeRecipientInfo{
+		Version: CMSVersion(3),
+		Originator: asn1.RawValue{Tag: 1, Class: 2, IsCompound: true, Bytes: []byte{
+			0x30, 0x04, 0x06, 0x02, 0x2a, 0x03, 0x03, 0x02, 0x07, 0x80},
+		},
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		RecipientEncryptedKeys: RecipientEncryptedKeys{
+			RecipientEncryptedKey{
+				RKeyID: RecipientKeyIdentifier{
+					SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+					Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+				},
+				EncryptedKey: EncryptedKey{0x01},
+			},
+		},
+	}, "3030020103a10a300406022a0303020780300406022a0330193017a012040101170d3135303232303031303230335a040101"},
+	{KeyAgreeRecipientInfo{
+		Version:    CMSVersion(3),
+		Originator: asn1.RawValue{Tag: 0, Class: 2, IsCompound: false, Bytes: []byte{1}},
+		Ukm:        UserKeyingMaterial{0x01},
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		RecipientEncryptedKeys: RecipientEncryptedKeys{
+			RecipientEncryptedKey{
+				RKeyID: RecipientKeyIdentifier{
+					SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+					Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+				},
+				EncryptedKey: EncryptedKey{0x01},
+			},
+		},
+	}, "302c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {

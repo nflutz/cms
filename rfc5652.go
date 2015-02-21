@@ -153,15 +153,20 @@ type EncryptedKey []byte
 
 // KeyAgreeRecipientInfo ::= SEQUENCE {
 //   version CMSVersion,  -- always set to 3
-//   originator [0] EXPLICIT OriginatorIdentifierOrKey,
+//   originator ::= CHOICE {
+//     issuerAndSerialNumber IssuerAndSerialNumber,
+//     subjectKeyIdentifier [0] SubjectKeyIdentifier,
+//     originatorKey [1] OriginatorPublicKey } [0] EXPLICIT OriginatorIdentifierOrKey,
 //   ukm [1] EXPLICIT UserKeyingMaterial OPTIONAL,
 //   keyEncryptionAlgorithm KeyEncryptionAlgorithmIdentifier,
 //   recipientEncryptedKeys RecipientEncryptedKeys }
-
-// OriginatorIdentifierOrKey ::= CHOICE {
-//   issuerAndSerialNumber IssuerAndSerialNumber,
-//   subjectKeyIdentifier [0] SubjectKeyIdentifier,
-//   originatorKey [1] OriginatorPublicKey }
+type KeyAgreeRecipientInfo struct {
+	Version                CMSVersion
+	Originator             interface{}        `asn1:"explicit,tag:0"`
+	Ukm                    UserKeyingMaterial `asn1:"explicit,tag:1,optional"`
+	KeyEncryptionAlgorithm pkix.AlgorithmIdentifier
+	RecipientEncryptedKeys RecipientEncryptedKeys
+}
 
 // OriginatorPublicKey ::= SEQUENCE {
 //   algorithm AlgorithmIdentifier,
