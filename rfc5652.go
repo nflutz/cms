@@ -176,6 +176,11 @@ type OriginatorPublicKey struct {
 // RecipientEncryptedKey ::= SEQUENCE {
 //   rid KeyAgreeRecipientIdentifier,
 //   encryptedKey EncryptedKey }
+type RecipientEncryptedKey struct {
+	IssuerAndSerialNumber IssuerAndSerialNumber  `asn1:"optional"`
+	RKeyID                RecipientKeyIdentifier `asn1:"implicit,tag:0,optional"`
+	EncryptedKey          EncryptedKey
+}
 
 // KeyAgreeRecipientIdentifier ::= CHOICE {
 //   issuerAndSerialNumber IssuerAndSerialNumber,

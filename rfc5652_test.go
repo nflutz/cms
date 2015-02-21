@@ -197,6 +197,27 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		EncryptedContent: EncryptedContent{0x01},
 	}, "300d06022a03300406022a03800101"},
+	{RecipientEncryptedKey{
+		IssuerAndSerialNumber: IssuerAndSerialNumber{
+			Issuer: pkix.RDNSequence{
+				pkix.RelativeDistinguishedNameSET{
+					pkix.AttributeTypeAndValue{
+						Type:  asn1.ObjectIdentifier{2, 5, 4, 3},
+						Value: "www.example.com",
+					},
+				},
+			},
+			SerialNumber: big.NewInt(1),
+		},
+		EncryptedKey: EncryptedKey{0x01},
+	}, "3024301f301a311830160603550403130f7777772e6578616d706c652e636f6d020101040101"},
+	{RecipientEncryptedKey{
+		RKeyID: RecipientKeyIdentifier{
+			SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+			Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+		},
+		EncryptedKey: EncryptedKey{0x01},
+	}, "3017a012040101170d3135303232303031303230335a040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
