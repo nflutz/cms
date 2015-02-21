@@ -215,6 +215,10 @@ type SubjectKeyIdentifier []byte
 // OtherRecipientInfo ::= SEQUENCE {
 //   oriType OBJECT IDENTIFIER,
 //   oriValue ANY DEFINED BY oriType }
+type OtherRecipientInfo struct {
+	OriType  asn1.ObjectIdentifier
+	OriValue interface{}
+}
 
 // DigestedData ::= SEQUENCE {
 //   version CMSVersion,

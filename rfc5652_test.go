@@ -180,6 +180,10 @@ var marshalCMSTests = []marshalCMSTest{
 			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		},
 	}, "3033020103800101300406022a03300406022a03040101a11c300c06022a033106020101020101300c06022a033106020101020101"},
+	{OtherRecipientInfo{
+		OriType:  asn1.ObjectIdentifier{1, 2, 3},
+		OriValue: int(1),
+	}, "300706022a03020101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
