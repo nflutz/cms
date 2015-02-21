@@ -51,7 +51,8 @@ type ContentInfo struct {
 // DigestAlgorithmIdentifiersSET ::= SET OF DigestAlgorithmIdentifier
 type DigestAlgorithmIdentifiersSET []pkix.AlgorithmIdentifier
 
-// SignerInfos ::= SET OF SignerInfo
+// SignerInfosSET ::= SET OF SignerInfo
+type SignerInfosSET []SignerInfo
 
 // EncapsulatedContentInfo ::= SEQUENCE {
 //   eContentType ContentType,

@@ -180,6 +180,23 @@ var marshalCMSTests = []marshalCMSTest{
 			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		},
 	}, "3033020103800101300406022a03300406022a03040101a11c300c06022a033106020101020101300c06022a033106020101020101"},
+	{SignerInfosSET{
+		SignerInfo{
+			Version:              CMSVersion(3),
+			SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+			DigestAlgorithmIdentifier: pkix.AlgorithmIdentifier{
+				Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+			},
+			SignedAttrs: SignedAttributesSET{
+				Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+				Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			},
+			SignatureAlgorithm: pkix.AlgorithmIdentifier{
+				Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+			},
+			Signature: SignatureValue{0x01},
+		},
+	}, "31353033020103800101300406022a03a01c300c06022a033106020101020101300c06022a033106020101020101300406022a03040101"},
 	{OtherRecipientInfo{
 		OriType:  asn1.ObjectIdentifier{1, 2, 3},
 		OriValue: int(1),
