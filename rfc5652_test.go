@@ -405,6 +405,10 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		EncryptedKey: EncryptedKey{0x01},
 	}, "300f020100800101300406022a03040101"},
+	{OtherRevocationInfoFormat{
+		OtherRevInfoFormat: asn1.ObjectIdentifier{1, 2, 3},
+		OtherRevInfo:       asn1.RawValue{Tag: 1, Class: 2, IsCompound: false, Bytes: []byte{1, 2, 3}},
+	}, "300906022a038103010203"},
 }
 
 func TestMarshalCMS(t *testing.T) {

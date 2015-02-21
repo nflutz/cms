@@ -318,6 +318,10 @@ type MessageAuthenticationCode []byte
 // OtherRevocationInfoFormat ::= SEQUENCE {
 //   otherRevInfoFormat OBJECT IDENTIFIER,
 //   otherRevInfo ANY DEFINED BY otherRevInfoFormat }
+type OtherRevocationInfoFormat struct {
+	OtherRevInfoFormat asn1.ObjectIdentifier
+	OtherRevInfo       interface{}
+}
 
 // CertificateChoices ::= CHOICE {
 //    certificate Certificate,
