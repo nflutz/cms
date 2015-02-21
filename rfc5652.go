@@ -245,6 +245,12 @@ type OtherRecipientInfo struct {
 //   digestAlgorithm DigestAlgorithmIdentifier,
 //   encapContentInfo EncapsulatedContentInfo,
 //   digest Digest }
+type DigestedData struct {
+	Version          CMSVersion
+	DigestAlgorithm  pkix.AlgorithmIdentifier
+	EncapContentInfo EncapsulatedContentInfo
+	Digest           Digest
+}
 
 // Digest ::= OCTET STRING
 type Digest []byte
