@@ -69,6 +69,16 @@ type EncapsulatedContentInfo struct {
 //   signatureAlgorithm SignatureAlgorithmIdentifier,
 //   signature SignatureValue,
 //   unsignedAttrs [1] IMPLICIT UnsignedAttributes OPTIONAL }
+type SignerInfo struct {
+	Version                   CMSVersion
+	IssuerAndSerialNumber     IssuerAndSerialNumber `asn1:"optional"`
+	SubjectKeyIdentifier      SubjectKeyIdentifier  `asn1:"tag:0,implicit,optional"`
+	DigestAlgorithmIdentifier pkix.AlgorithmIdentifier
+	SignedAttrs               SignedAttributesSET `asn1:"tag:0,implicit,optional"`
+	SignatureAlgorithm        pkix.AlgorithmIdentifier
+	Signature                 SignatureValue
+	UnsignedAttributes        UnsignedAttributesSET `asn1:"tag:1,implicit,optional"`
+}
 
 // SignerIdentifier ::= CHOICE {
 //   issuerAndSerialNumber IssuerAndSerialNumber,

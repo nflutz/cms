@@ -119,6 +119,68 @@ var marshalCMSTests = []marshalCMSTest{
 			KeyAttrID: asn1.ObjectIdentifier{1, 2, 3},
 		},
 	}, "3018040101170d3135303232303031303230335a300406022a03"},
+	{SignerInfo{
+		Version:              CMSVersion(3),
+		SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+		DigestAlgorithmIdentifier: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		SignatureAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		Signature: SignatureValue{0x01},
+	}, "3015020103800101300406022a03300406022a03040101"},
+	{SignerInfo{
+		Version: CMSVersion(3),
+		IssuerAndSerialNumber: IssuerAndSerialNumber{
+			Issuer: pkix.RDNSequence{
+				pkix.RelativeDistinguishedNameSET{
+					pkix.AttributeTypeAndValue{
+						Type:  asn1.ObjectIdentifier{2, 5, 4, 3},
+						Value: "www.example.com",
+					},
+				},
+			},
+			SerialNumber: big.NewInt(1),
+		},
+		DigestAlgorithmIdentifier: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		SignatureAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		Signature: SignatureValue{0x01},
+	}, "3033020103301f301a311830160603550403130f7777772e6578616d706c652e636f6d020101300406022a03300406022a03040101"},
+	{SignerInfo{
+		Version:              CMSVersion(3),
+		SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+		DigestAlgorithmIdentifier: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		SignedAttrs: SignedAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+		SignatureAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		Signature: SignatureValue{0x01},
+	}, "3033020103800101300406022a03a01c300c06022a033106020101020101300c06022a033106020101020101300406022a03040101"},
+	{SignerInfo{
+		Version:              CMSVersion(3),
+		SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+		DigestAlgorithmIdentifier: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		SignatureAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		Signature: SignatureValue{0x01},
+		UnsignedAttributes: UnsignedAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+	}, "3033020103800101300406022a03300406022a03040101a11c300c06022a033106020101020101300c06022a033106020101020101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
@@ -129,7 +191,7 @@ func TestMarshalCMS(t *testing.T) {
 		}
 		out, _ := hex.DecodeString(test.out)
 		if !bytes.Equal(out, data) {
-			t.Errorf("Test #%d Failed - got: %x expected: %x\n", i+1, data, out)
+			t.Errorf("Test #%d Failed\n     got: %x\nexpected: %x\n", i+1, data, out)
 		}
 	}
 }
