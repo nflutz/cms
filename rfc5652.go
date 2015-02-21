@@ -332,9 +332,13 @@ type OtherRevocationInfoFormat struct {
 
 //  AttributeCertificateV2 ::= AttributeCertificate
 
-//  OtherCertificateFormat ::= SEQUENCE {
+// OtherCertificateFormat ::= SEQUENCE {
 //    otherCertFormat OBJECT IDENTIFIER,
 //    otherCert ANY DEFINED BY otherCertFormat }
+type OtherCertificateFormat struct {
+	OtherCertFormat asn1.ObjectIdentifier
+	OtherCert       interface{}
+}
 
 //  CertificateSet ::= SET OF CertificateChoices
 

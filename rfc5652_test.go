@@ -409,6 +409,10 @@ var marshalCMSTests = []marshalCMSTest{
 		OtherRevInfoFormat: asn1.ObjectIdentifier{1, 2, 3},
 		OtherRevInfo:       asn1.RawValue{Tag: 1, Class: 2, IsCompound: false, Bytes: []byte{1, 2, 3}},
 	}, "300906022a038103010203"},
+	{OtherCertificateFormat{
+		OtherCertFormat: asn1.ObjectIdentifier{1, 2, 3},
+		OtherCert:       asn1.RawValue{Tag: 1, Class: 2, IsCompound: false, Bytes: []byte{1, 2, 3}},
+	}, "300906022a038103010203"},
 }
 
 func TestMarshalCMS(t *testing.T) {
