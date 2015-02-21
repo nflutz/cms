@@ -213,6 +213,11 @@ type SubjectKeyIdentifier []byte
 //   keyIdentifier OCTET STRING,
 //   date GeneralizedTime OPTIONAL,
 //   other OtherKeyAttribute OPTIONAL }
+type KEKIdentifier struct {
+	KeyIdentifier []byte
+	Date          time.Time         `asn1:"optional"`
+	Other         OtherKeyAttribute `asn1:"optional"`
+}
 
 // PasswordRecipientInfo ::= SEQUENCE {
 //   version CMSVersion,   -- always set to 0

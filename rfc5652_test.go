@@ -304,6 +304,26 @@ var marshalCMSTests = []marshalCMSTest{
 			},
 		},
 	}, "302c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101"},
+	{KEKIdentifier{
+		KeyIdentifier: []byte{0x01},
+	}, "3003040101"},
+	{KEKIdentifier{
+		KeyIdentifier: []byte{0x01},
+		Date:          time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+	}, "3012040101170d3135303232303031303230335a"},
+	{KEKIdentifier{
+		KeyIdentifier: []byte{0x01},
+		Other: OtherKeyAttribute{
+			KeyAttrID: asn1.ObjectIdentifier{1, 2, 3},
+		},
+	}, "3009040101300406022a03"},
+	{KEKIdentifier{
+		KeyIdentifier: []byte{0x01},
+		Other: OtherKeyAttribute{
+			KeyAttrID: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		Date: time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+	}, "3018040101170d3135303232303031303230335a300406022a03"},
 }
 
 func TestMarshalCMS(t *testing.T) {
