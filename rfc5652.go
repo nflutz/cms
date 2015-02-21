@@ -144,9 +144,18 @@ type EncryptedKey []byte
 
 // KeyTransRecipientInfo ::= SEQUENCE {
 //   version CMSVersion,  -- always set to 0 or 2
-//   rid RecipientIdentifier,
+//   rid RecipientIdentifier ::= CHOICE {
+//     issuerAndSerialNumber IssuerAndSerialNumber,
+//     subjectKeyIdentifier [0] SubjectKeyIdentifier }
 //   keyEncryptionAlgorithm KeyEncryptionAlgorithmIdentifier,
 //   encryptedKey EncryptedKey }
+type KeyTransRecipientInfo struct {
+	Version                CMSVersion
+	IssuerAndSerialNumber  IssuerAndSerialNumber `asn1:"optional"`
+	SubjectKeyIdentifier   SubjectKeyIdentifier  `asn1:"tag:0,optional"`
+	KeyEncryptionAlgorithm pkix.AlgorithmIdentifier
+	EncryptedKey           EncryptedKey
+}
 
 // RecipientIdentifier ::= CHOICE {
 //   issuerAndSerialNumber IssuerAndSerialNumber,
