@@ -208,6 +208,12 @@ type SubjectKeyIdentifier []byte
 //   kekid KEKIdentifier,
 //   keyEncryptionAlgorithm KeyEncryptionAlgorithmIdentifier,
 //   encryptedKey EncryptedKey }
+type KEKRecipientInfo struct {
+	Version                CMSVersion
+	Kekid                  KEKIdentifier
+	KeyEncryptionAlgorithm pkix.AlgorithmIdentifier
+	EncryptedKey           EncryptedKey
+}
 
 // KEKIdentifier ::= SEQUENCE {
 //   keyIdentifier OCTET STRING,

@@ -324,6 +324,16 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		Date: time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
 	}, "3018040101170d3135303232303031303230335a300406022a03"},
+	{KEKRecipientInfo{
+		Version: CMSVersion(4),
+		Kekid: KEKIdentifier{
+			KeyIdentifier: []byte{0x01},
+		},
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncryptedKey: EncryptedKey{0x01},
+	}, "30110201043003040101300406022a03040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
