@@ -172,6 +172,7 @@ type OriginatorPublicKey struct {
 }
 
 // RecipientEncryptedKeys ::= SEQUENCE OF RecipientEncryptedKey
+type RecipientEncryptedKeys []RecipientEncryptedKey
 
 // RecipientEncryptedKey ::= SEQUENCE {
 //   rid KeyAgreeRecipientIdentifier,

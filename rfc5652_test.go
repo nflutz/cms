@@ -218,6 +218,15 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		EncryptedKey: EncryptedKey{0x01},
 	}, "3017a012040101170d3135303232303031303230335a040101"},
+	{RecipientEncryptedKeys{
+		RecipientEncryptedKey{
+			RKeyID: RecipientKeyIdentifier{
+				SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+				Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+			},
+			EncryptedKey: EncryptedKey{0x01},
+		},
+	}, "30193017a012040101170d3135303232303031303230335a040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
