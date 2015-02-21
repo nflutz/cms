@@ -231,6 +231,12 @@ type KEKIdentifier struct {
 //                              OPTIONAL,
 //   keyEncryptionAlgorithm KeyEncryptionAlgorithmIdentifier,
 //   encryptedKey EncryptedKey }
+type PasswordRecipientInfo struct {
+	Version                CMSVersion
+	KeyDerivationAlgorithm pkix.AlgorithmIdentifier `asn1:"implicit,tag:0,optional"`
+	KeyEncryptionAlgorithm pkix.AlgorithmIdentifier
+	EncryptedKey           EncryptedKey
+}
 
 // OtherRecipientInfo ::= SEQUENCE {
 //   oriType OBJECT IDENTIFIER,

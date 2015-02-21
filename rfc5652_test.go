@@ -345,6 +345,23 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		Digest: Digest{0x01},
 	}, "301e020101300406022a03301006092a864886f70d010706a003040101040101"},
+	{PasswordRecipientInfo{
+		Version: CMSVersion(0),
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncryptedKey: EncryptedKey{0x01},
+	}, "300c020100300406022a03040101"},
+	{PasswordRecipientInfo{
+		Version: CMSVersion(0),
+		KeyDerivationAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		KeyEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncryptedKey: EncryptedKey{0x01},
+	}, "3012020100a00406022a03300406022a03040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
