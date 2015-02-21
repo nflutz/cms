@@ -63,7 +63,9 @@ type EncapsulatedContentInfo struct {
 
 // SignerInfo ::= SEQUENCE {
 //   version CMSVersion,
-//   sid SignerIdentifier,
+//   sid SignerIdentifier ::= CHOICE {
+//     issuerAndSerialNumber IssuerAndSerialNumber,
+//     subjectKeyIdentifier [0] SubjectKeyIdentifier }
 //   digestAlgorithm DigestAlgorithmIdentifier,
 //   signedAttrs [0] IMPLICIT SignedAttributes OPTIONAL,
 //   signatureAlgorithm SignatureAlgorithmIdentifier,
@@ -79,10 +81,6 @@ type SignerInfo struct {
 	Signature                 SignatureValue
 	UnsignedAttributes        UnsignedAttributesSET `asn1:"tag:1,implicit,optional"`
 }
-
-// SignerIdentifier ::= CHOICE {
-//   issuerAndSerialNumber IssuerAndSerialNumber,
-//   subjectKeyIdentifier [0] SubjectKeyIdentifier }
 
 // SignedAttributesSET ::= SET SIZE (1..MAX) OF Attribute
 type SignedAttributesSET []Attribute
