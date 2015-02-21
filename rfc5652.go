@@ -4,6 +4,7 @@ import (
 	"crypto/x509/pkix"
 	"encoding/asn1"
 	"math/big"
+	"time"
 )
 
 // -- Imports from RFC 5280 [PROFILE], Appendix A.1
@@ -176,6 +177,11 @@ type OriginatorPublicKey struct {
 //   subjectKeyIdentifier SubjectKeyIdentifier,
 //   date GeneralizedTime OPTIONAL,
 //   other OtherKeyAttribute OPTIONAL }
+type RecipientKeyIdentifier struct {
+	SubjectKeyIdentifier SubjectKeyIdentifier
+	Date                 time.Time
+	Other                OtherKeyAttribute `asn1:"optional"`
+}
 
 // SubjectKeyIdentifier ::= OCTET STRING
 type SubjectKeyIdentifier []byte

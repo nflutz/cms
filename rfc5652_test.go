@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"math/big"
 	"testing"
+	"time"
 )
 
 type marshalCMSTest struct {
@@ -107,6 +108,17 @@ var marshalCMSTests = []marshalCMSTest{
 		},
 		EncryptedContent: EncryptedContent{0x01},
 	}, "300d06022a03300406022a03800101"},
+	{RecipientKeyIdentifier{
+		SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+		Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+	}, "3012040101170d3135303232303031303230335a"},
+	{RecipientKeyIdentifier{
+		SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+		Date:                 time.Date(2015, 2, 20, 01, 02, 03, 0, time.UTC),
+		Other: OtherKeyAttribute{
+			KeyAttrID: asn1.ObjectIdentifier{1, 2, 3},
+		},
+	}, "3018040101170d3135303232303031303230335a300406022a03"},
 }
 
 func TestMarshalCMS(t *testing.T) {
