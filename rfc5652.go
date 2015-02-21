@@ -233,6 +233,11 @@ type Digest []byte
 //   version CMSVersion,
 //   encryptedContentInfo EncryptedContentInfo,
 //   unprotectedAttrs [1] IMPLICIT UnprotectedAttributes OPTIONAL }
+type EncryptedData struct {
+	Version              CMSVersion
+	EncryptedContentInfo EncapsulatedContentInfo
+	UnprotectedAttrs     UnprotectedAttributesSET `asn1:"implicit,tag:1,optional"`
+}
 
 // AuthenticatedData ::= SEQUENCE {
 //   version CMSVersion,

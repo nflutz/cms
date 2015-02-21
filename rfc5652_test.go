@@ -184,6 +184,19 @@ var marshalCMSTests = []marshalCMSTest{
 		OriType:  asn1.ObjectIdentifier{1, 2, 3},
 		OriValue: int(1),
 	}, "300706022a03020101"},
+	{EncryptedContentInfo{
+		ContentType: asn1.ObjectIdentifier{1, 2, 3},
+		ContentEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+	}, "300a06022a03300406022a03"},
+	{EncryptedContentInfo{
+		ContentType: asn1.ObjectIdentifier{1, 2, 3},
+		ContentEncryptionAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncryptedContent: EncryptedContent{0x01},
+	}, "300d06022a03300406022a03800101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
