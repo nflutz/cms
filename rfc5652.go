@@ -3,6 +3,7 @@ package cms
 import (
 	"crypto/x509/pkix"
 	"encoding/asn1"
+	"math/big"
 )
 
 // -- Imports from RFC 5280 [PROFILE], Appendix A.1
@@ -267,9 +268,13 @@ type MessageAuthenticationCode []byte
 
 //  CertificateSet ::= SET OF CertificateChoices
 
-//  IssuerAndSerialNumber ::= SEQUENCE {
+// IssuerAndSerialNumber ::= SEQUENCE {
 //    issuer Name,
 //    serialNumber CertificateSerialNumber }
+type IssuerAndSerialNumber struct {
+	Issuer       pkix.RDNSequence
+	SerialNumber *big.Int
+}
 
 // CMSVersion ::= INTEGER  { v0(0), v1(1), v2(2), v3(3), v4(4), v5(5) }
 type CMSVersion int

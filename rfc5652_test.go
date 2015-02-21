@@ -5,6 +5,7 @@ import (
 	"crypto/x509/pkix"
 	"encoding/asn1"
 	"encoding/hex"
+	"math/big"
 	"testing"
 )
 
@@ -82,6 +83,17 @@ var marshalCMSTests = []marshalCMSTest{
 		Algorithm: pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
 		PublicKey: asn1.BitString{[]byte{0x80}, 1},
 	}, "300a300406022a0303020780"},
+	{IssuerAndSerialNumber{
+		Issuer: pkix.RDNSequence{
+			pkix.RelativeDistinguishedNameSET{
+				pkix.AttributeTypeAndValue{
+					Type:  asn1.ObjectIdentifier{2, 5, 4, 3},
+					Value: "www.example.com",
+				},
+			},
+		},
+		SerialNumber: big.NewInt(1),
+	}, "301f301a311830160603550403130f7777772e6578616d706c652e636f6d020101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
