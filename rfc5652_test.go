@@ -413,6 +413,43 @@ var marshalCMSTests = []marshalCMSTest{
 		OtherCertFormat: asn1.ObjectIdentifier{1, 2, 3},
 		OtherCert:       asn1.RawValue{Tag: 1, Class: 2, IsCompound: false, Bytes: []byte{1, 2, 3}},
 	}, "300906022a038103010203"},
+	{SignedData{
+		Version: CMSVersion(1),
+		DigestAlgorithms: DigestAlgorithmIdentifiersSET{
+			pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
+			pkix.AlgorithmIdentifier{Algorithm: asn1.ObjectIdentifier{1, 2, 3}},
+		},
+		EncapContentInfo: EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
+		Certificates: []asn1.RawValue{asn1.RawValue{
+			Tag:        3,
+			Class:      2,
+			IsCompound: true,
+			Bytes:      []byte{0x06, 0x02, 0x2a, 0x03, 0x81, 0x03, 0x01, 0x02, 0x03},
+		}},
+		Crls: []asn1.RawValue{asn1.RawValue{
+			Tag:        1,
+			Class:      2,
+			IsCompound: true,
+			Bytes:      []byte{0x06, 0x02, 0x2a, 0x03, 0x81, 0x03, 0x01, 0x02, 0x03},
+		}},
+		SignerInfos: SignerInfosSET{
+			SignerInfo{
+				Version:              CMSVersion(3),
+				SubjectKeyIdentifier: SubjectKeyIdentifier{0x01},
+				DigestAlgorithmIdentifier: pkix.AlgorithmIdentifier{
+					Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+				},
+				SignedAttrs: SignedAttributesSET{
+					Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+					Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+				},
+				SignatureAlgorithm: pkix.AlgorithmIdentifier{
+					Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+				},
+				Signature: SignatureValue{0x01},
+			},
+		},
+	}, "3074020101310c300406022a03300406022a03301006092a864886f70d010706a003040101a00ba30906022a038103010203a10ba10906022a03810301020331353033020103800101300406022a03a01c300c06022a033106020101020101300c06022a033106020101020101300406022a03040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {

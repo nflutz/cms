@@ -47,6 +47,14 @@ type ContentInfo struct {
 //   certificates [0] IMPLICIT CertificateSet OPTIONAL,
 //   crls [1] IMPLICIT RevocationInfoChoices OPTIONAL,
 //   signerInfos SignerInfos }
+type SignedData struct {
+	Version          CMSVersion
+	DigestAlgorithms DigestAlgorithmIdentifiersSET
+	EncapContentInfo EncapsulatedContentInfo
+	Certificates     []asn1.RawValue `asn1:"implicit,tag:0,optional"`
+	Crls             []asn1.RawValue `asn1:"implicit,tag:1,optional"`
+	SignerInfos      SignerInfosSET
+}
 
 // DigestAlgorithmIdentifiersSET ::= SET OF DigestAlgorithmIdentifier
 type DigestAlgorithmIdentifiersSET []pkix.AlgorithmIdentifier
