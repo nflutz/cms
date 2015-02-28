@@ -450,6 +450,20 @@ var marshalCMSTests = []marshalCMSTest{
 			},
 		},
 	}, "3074020101310c300406022a03300406022a03301006092a864886f70d010706a003040101a00ba30906022a038103010203a10ba10906022a03810301020331353033020103800101300406022a03a01c300c06022a033106020101020101300c06022a033106020101020101300406022a03040101"},
+	{OriginatorInfo{
+		Certs: []asn1.RawValue{asn1.RawValue{
+			Tag:        3,
+			Class:      2,
+			IsCompound: true,
+			Bytes:      []byte{0x06, 0x02, 0x2a, 0x03, 0x81, 0x03, 0x01, 0x02, 0x03},
+		}},
+		Crls: []asn1.RawValue{asn1.RawValue{
+			Tag:        1,
+			Class:      2,
+			IsCompound: true,
+			Bytes:      []byte{0x06, 0x02, 0x2a, 0x03, 0x81, 0x03, 0x01, 0x02, 0x03},
+		}},
+	}, "301aa00ba30906022a038103010203a10ba10906022a038103010203"},
 }
 
 func TestMarshalCMS(t *testing.T) {

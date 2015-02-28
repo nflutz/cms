@@ -121,6 +121,10 @@ type SignatureValue []byte
 // OriginatorInfo ::= SEQUENCE {
 //   certs [0] IMPLICIT CertificateSet OPTIONAL,
 //   crls [1] IMPLICIT RevocationInfoChoices OPTIONAL }
+type OriginatorInfo struct {
+	Certs []asn1.RawValue `asn1:"tag:0,implicit,optional"`
+	Crls  []asn1.RawValue `asn1:"tag:1,implicit,optional"`
+}
 
 // RecipientInfos ::= SET SIZE (1..MAX) OF RecipientInfo
 
