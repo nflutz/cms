@@ -117,6 +117,13 @@ type SignatureValue []byte
 //   recipientInfos RecipientInfos,
 //   encryptedContentInfo EncryptedContentInfo,
 //   unprotectedAttrs [1] IMPLICIT UnprotectedAttributes OPTIONAL }
+type EnvelopedData struct {
+	Version              CMSVersion
+	OriginatorInfo       OriginatorInfo `asn1:"tag:0,implicit,optional"`
+	RecipientInfos       []asn1.RawValue
+	EncryptedContentInfo EncryptedContentInfo
+	UnprotectedAttrs     UnprotectedAttributesSET `asn1:"tag:1,implicit,optional"`
+}
 
 // OriginatorInfo ::= SEQUENCE {
 //   certs [0] IMPLICIT CertificateSet OPTIONAL,
