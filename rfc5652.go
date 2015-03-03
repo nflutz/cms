@@ -306,6 +306,17 @@ type EncryptedData struct {
 //   authAttrs [2] IMPLICIT AuthAttributes OPTIONAL,
 //   mac MessageAuthenticationCode,
 //   unauthAttrs [3] IMPLICIT UnauthAttributes OPTIONAL }
+type AuthenticatedData struct {
+	Version          CMSVersion
+	OriginatorInfo   OriginatorInfo `asn1:"tag:0,implicit,optional"`
+	RecipientInfos   []asn1.RawValue
+	MACAlgorithm     pkix.AlgorithmIdentifier
+	DigestAlgorithm  pkix.AlgorithmIdentifier `asn1:"tag:1,explicit,optional"`
+	EncapContentInfo EncapsulatedContentInfo
+	AuthAttrs        AuthAttributesSET `asn1:"tag:2,implicit,optional"`
+	MAC              MessageAuthenticationCode
+	UnauthAttrs      UnauthAttributesSET `asn1:"tag:3,implicit,optional"`
+}
 
 // AuthAttributesSET ::= SET SIZE (1..MAX) OF Attribute
 type AuthAttributesSET []Attribute

@@ -502,6 +502,122 @@ var marshalCMSTests = []marshalCMSTest{
 			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
 		},
 	}, "3079020101a01aa00ba30906022a038103010203a10ba10906022a038103010203302ea12c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101300a06022a03300406022a03a11c300c06022a033106020101020101300c06022a033106020101020101"},
+	{AuthenticatedData{
+		Version: CMSVersion(1),
+		OriginatorInfo: OriginatorInfo{
+			Certs: []asn1.RawValue{asn1.RawValue{
+				Tag:        3,
+				Class:      2,
+				IsCompound: true,
+				Bytes:      []byte{0x06, 0x02, 0x2a, 0x03, 0x81, 0x03, 0x01, 0x02, 0x03},
+			}},
+			Crls: []asn1.RawValue{asn1.RawValue{
+				Tag:        1,
+				Class:      2,
+				IsCompound: true,
+				Bytes:      []byte{0x06, 0x02, 0x2a, 0x03, 0x81, 0x03, 0x01, 0x02, 0x03},
+			}},
+		},
+		RecipientInfos: []asn1.RawValue{asn1.RawValue{
+			Tag:        1,
+			Class:      2,
+			IsCompound: true,
+			Bytes: []byte{
+				0x02, 0x01, 0x03, 0x80, 0x01, 0x01, 0xa1, 0x03, 0x04, 0x01, 0x01, 0x30, 0x04, 0x06,
+				0x02, 0x2a, 0x03, 0x30, 0x19, 0x30, 0x17, 0xa0, 0x12, 0x04, 0x01, 0x01, 0x17, 0x0d,
+				0x31, 0x35, 0x30, 0x32, 0x32, 0x30, 0x30, 0x31, 0x30, 0x32, 0x30, 0x33, 0x5a, 0x04,
+				0x01, 0x01,
+			},
+		}},
+		MACAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		DigestAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncapContentInfo: EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
+		AuthAttrs: AuthAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+		MAC: MessageAuthenticationCode{0x01},
+		UnauthAttrs: UnauthAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+	}, "3081ae020101a01aa00ba30906022a038103010203a10ba10906022a038103010203302ea12c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101300406022a03a106300406022a03301006092a864886f70d010706a003040101a21c300c06022a033106020101020101300c06022a033106020101020101040101a31c300c06022a033106020101020101300c06022a033106020101020101"},
+	{AuthenticatedData{
+		Version: CMSVersion(1),
+		RecipientInfos: []asn1.RawValue{asn1.RawValue{
+			Tag:        1,
+			Class:      2,
+			IsCompound: true,
+			Bytes: []byte{
+				0x02, 0x01, 0x03, 0x80, 0x01, 0x01, 0xa1, 0x03, 0x04, 0x01, 0x01, 0x30, 0x04, 0x06,
+				0x02, 0x2a, 0x03, 0x30, 0x19, 0x30, 0x17, 0xa0, 0x12, 0x04, 0x01, 0x01, 0x17, 0x0d,
+				0x31, 0x35, 0x30, 0x32, 0x32, 0x30, 0x30, 0x31, 0x30, 0x32, 0x30, 0x33, 0x5a, 0x04,
+				0x01, 0x01,
+			},
+		}},
+		MACAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		DigestAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncapContentInfo: EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
+		AuthAttrs: AuthAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+		MAC: MessageAuthenticationCode{0x01},
+		UnauthAttrs: UnauthAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+	}, "308192020101302ea12c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101300406022a03a106300406022a03301006092a864886f70d010706a003040101a21c300c06022a033106020101020101300c06022a033106020101020101040101a31c300c06022a033106020101020101300c06022a033106020101020101"},
+	{AuthenticatedData{
+		Version: CMSVersion(1),
+		RecipientInfos: []asn1.RawValue{asn1.RawValue{
+			Tag:        1,
+			Class:      2,
+			IsCompound: true,
+			Bytes: []byte{
+				0x02, 0x01, 0x03, 0x80, 0x01, 0x01, 0xa1, 0x03, 0x04, 0x01, 0x01, 0x30, 0x04, 0x06,
+				0x02, 0x2a, 0x03, 0x30, 0x19, 0x30, 0x17, 0xa0, 0x12, 0x04, 0x01, 0x01, 0x17, 0x0d,
+				0x31, 0x35, 0x30, 0x32, 0x32, 0x30, 0x30, 0x31, 0x30, 0x32, 0x30, 0x33, 0x5a, 0x04,
+				0x01, 0x01,
+			},
+		}},
+		MACAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncapContentInfo: EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
+		MAC:              MessageAuthenticationCode{0x01},
+		UnauthAttrs: UnauthAttributesSET{
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+			Attribute{asn1.ObjectIdentifier{1, 2, 3}, []AttributeValue{int(1), int(1)}},
+		},
+	}, "306c020101302ea12c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101300406022a03301006092a864886f70d010706a003040101040101a31c300c06022a033106020101020101300c06022a033106020101020101"},
+	{AuthenticatedData{
+		Version: CMSVersion(1),
+		RecipientInfos: []asn1.RawValue{asn1.RawValue{
+			Tag:        1,
+			Class:      2,
+			IsCompound: true,
+			Bytes: []byte{
+				0x02, 0x01, 0x03, 0x80, 0x01, 0x01, 0xa1, 0x03, 0x04, 0x01, 0x01, 0x30, 0x04, 0x06,
+				0x02, 0x2a, 0x03, 0x30, 0x19, 0x30, 0x17, 0xa0, 0x12, 0x04, 0x01, 0x01, 0x17, 0x0d,
+				0x31, 0x35, 0x30, 0x32, 0x32, 0x30, 0x30, 0x31, 0x30, 0x32, 0x30, 0x33, 0x5a, 0x04,
+				0x01, 0x01,
+			},
+		}},
+		MACAlgorithm: pkix.AlgorithmIdentifier{
+			Algorithm: asn1.ObjectIdentifier{1, 2, 3},
+		},
+		EncapContentInfo: EncapsulatedContentInfo{oidContentTypeEncryptedData, EncryptedContent{0x01}},
+		MAC:              MessageAuthenticationCode{0x01},
+	}, "304e020101302ea12c020103800101a103040101300406022a0330193017a012040101170d3135303232303031303230335a040101300406022a03301006092a864886f70d010706a003040101040101"},
 }
 
 func TestMarshalCMS(t *testing.T) {
